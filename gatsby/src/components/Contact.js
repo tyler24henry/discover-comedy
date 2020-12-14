@@ -63,6 +63,7 @@ export const Contact = () => {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    // woohoo
 
     const serviceId = process.env.GATSBY_EMAILJS_SERVICE_ID;
     const templateId = process.env.GATSBY_EMAILJS_TEMPLATE_ID;
