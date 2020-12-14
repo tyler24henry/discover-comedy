@@ -53,17 +53,15 @@ const ComedianStyles = styled.div`
     .wrapper {
         .top {
             position: relative;
-            min-height: 460px;
             .background-image {
                 width: 100%;
                 height: 320px;
                 object-fit: cover;
             }
             .comedian-details-grid {
+                margin-top: 1rem;
                 position: relative;
-                width: 90%;
-                margin: 0 auto;
-                margin-top: -8rem;
+                width: calc(100% - 2.6rem);
                 background: #172a45;
                 padding: 1.3rem;
                 display: grid;
@@ -133,6 +131,7 @@ const ComedianStyles = styled.div`
             }
         }
         .body-grid {
+            margin-top: 4rem;
             display: grid;
             grid-template-columns: 1fr 1.5fr;
             gap: 4rem;
@@ -258,9 +257,10 @@ const ComedianStyles = styled.div`
                 }
                 .youtube-playlist, .related-comedians {
                     width: calc(100% - 4rem);
-                    display: flex;
-                    gap: 1rem;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
                     justify-items: center;
+                    gap: 1rem;
                     background:#172a45;
                     padding: 2rem;
                     a {
@@ -296,12 +296,11 @@ const ComedianStyles = styled.div`
                     }
                 }
                 .related-comedians {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr 1fr 1fr;
-                    justify-items: center;
-                }
-                .related-comedians {
+                    width: calc(100% - 2rem);
+                    padding: 2rem 1rem;
                     .related-comedian {
+                        width: 100%;
+                        height: 100%;
                         .image-wrapper {
                             display: grid;
                             grid-template-columns: 1fr;
@@ -487,7 +486,7 @@ export default function Comedian({ data }) {
                                             <h2>Videos</h2>
                                         </div>
                                         <div className="videos-playlist-grid">
-                                            <ReactPlayer width="100%" url={`https://www.youtube.com/watch?v=${selectedVideoId}`} />
+                                            <ReactPlayer width="100%" url={`https://www.youtube.com/watch?v=${selectedVideoId}`} controls light />
                                             <div className="selected-video">
                                                 <p className="title">{selectedVideoTitle}</p>
                                                 <p className="date">{selectedVideoDate}</p>
@@ -495,28 +494,30 @@ export default function Comedian({ data }) {
                                             </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div className="section-header" id="related-videos">  
-                                            <h2>Related Videos</h2>
-                                        </div>
-                                        <div className="youtube-playlist">
-                                            {[...youtubeVideos].filter(video => video.id.videoId !== selectedVideoId).map((video, index) => {
-                                                const videoId = video.id.videoId;
-                                                const thumbnail = video.snippet.thumbnails.default.url;
-                                                let title = video.snippet.title.length > 35 ? `${video.snippet.title.slice(0,35)}...` : video.snippet.title;
-                                                const regex = /(&)(.*)(;)/s;
-                                                title = title.replace(regex, '');
-                                                return (
-                                                    <div className="youtube-item" id={videoId === selectedVideoId ? 'selected' : ''} key={videoId + index} onClick={() => setSelectedVideoId(videoId)}>
-                                                        <img src={thumbnail} alt="Video thumbnail" />
-                                                        <div className="video-details">
-                                                            <p id="title">{title}</p>
+                                    {youtubeVideos.length > 1 && (
+                                        <div>
+                                            <div className="section-header" id="related-videos">  
+                                                <h2>Related Videos</h2>
+                                            </div>
+                                            <div className="youtube-playlist">
+                                                {[...youtubeVideos].filter(video => video.id.videoId !== selectedVideoId).map((video, index) => {
+                                                    const videoId = video.id.videoId;
+                                                    const thumbnail = video.snippet.thumbnails.default.url;
+                                                    let title = video.snippet.title.length > 35 ? `${video.snippet.title.slice(0,35)}...` : video.snippet.title;
+                                                    const regex = /(&)(.*)(;)/s;
+                                                    title = title.replace(regex, '');
+                                                    return (
+                                                        <div className="youtube-item" id={videoId === selectedVideoId ? 'selected' : ''} key={videoId + index} onClick={() => setSelectedVideoId(videoId)}>
+                                                            <img src={thumbnail} alt="Video thumbnail" />
+                                                            <div className="video-details">
+                                                                <p id="title">{title}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                )
-                                            })}
+                                                    )
+                                                })}
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </>
                             )}
                             <div>
