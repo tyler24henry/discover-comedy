@@ -6,7 +6,7 @@ export default {
     pathPrefix: '/discover-comedy',
     siteMetadata: {
       title: `Discover Comedy`,
-      siteUrl: 'http://www.discover-comedy.com',
+      siteUrl: 'https://discovercomedy.netlify.app/',
       description: `Discover your next favorite comedian.`,
       image: '/favicon.svg',
       twitter: '@ty24henry',
@@ -28,6 +28,14 @@ export default {
         resolve: `gatsby-plugin-google-analytics`,
         options: {
           trackingId: 'UA-142485528-9',
+        },
+      },
+      {
+        resolve: `gatsby-plugin-hotjar`,
+        options: {
+          includeInDevelopment: true, // optional parameter to include script in development
+          id: 2159087,
+          sv: 6,
         },
       },
     ],
