@@ -24,5 +24,11 @@ export default {
           token: process.env.SANITY_TOKEN,
         },
       },
+      {
+        resolve: `gatsby-plugin-google-analytics`,
+        options: {
+          trackingId: 'UA-142485528-9',
+        },
+      },
     ],
   };
