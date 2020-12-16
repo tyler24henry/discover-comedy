@@ -11,6 +11,7 @@ import { shuffle } from '../utils/arrayHelpers';
 import { useYoutubeApi } from '../utils/useYoutubeApi';
 import { useTicketmasterApi } from '../utils/useTicketmasterApi';
 import SEO from '../components/SEO';
+import { Disqus } from 'gatsby-plugin-disqus';
 
 const ComedianStyles = styled.div`
     position: relative;
@@ -331,6 +332,11 @@ const ComedianStyles = styled.div`
         filter: blur(3px);
         opacity: 0.5;
     }
+    .disqus-wrapper {
+        margin-top: 4rem;
+        padding: 1rem 4rem;
+        background: #172a45;
+    }
 `;
 
 export default function Comedian({ data }) {
@@ -376,6 +382,12 @@ export default function Comedian({ data }) {
             selectedVideoDescription = selectedVideo.snippet.description;
             selectedVideoDescription = selectedVideoDescription.replace(regex, '');
         }
+    }
+
+    let disqusConfig = {
+        url: `https://discovercomedy.netlify.app/${comedian.slug.current}`,
+        identifier: comedian.id,
+        title: `${comedian.firstName} ${comedian.lastName}`,
     }
 
     return (
@@ -539,6 +551,9 @@ export default function Comedian({ data }) {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="disqus-wrapper">
+                    <Disqus config={disqusConfig} />
                 </div>
             </ComedianStyles>
         </>

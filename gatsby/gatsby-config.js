@@ -38,5 +38,11 @@ export default {
           sv: 6,
         },
       },
+      {
+        resolve: `gatsby-plugin-disqus`,
+        options: {
+          shortname: `discover-comedy`
+        }
+      },
     ],
   };

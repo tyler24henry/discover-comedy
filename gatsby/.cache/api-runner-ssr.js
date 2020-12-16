@@ -8,6 +8,12 @@ var plugins = [{
       plugin: require('/Users/tylerhenry/Desktop/discover-comedy/gatsby/node_modules/gatsby-source-sanity/gatsby-ssr'),
       options: {"plugins":[],"projectId":"baqa90qc","dataset":"production","watchMode":true,"token":"sk3Yla410vL9W85hLJxEiLdkkEQAUniAKmj94IBvgprGo0rKCF1w6Xv0FqRwweVRli7E6G0W7yg2pbt8zGvtOMgZ11TPoZ3RMtfUu2lABHPi8IBuVuzV4WRXOIdoQOHuBFL6AQ8yKvVLaOkgr0fpMfFMXl2GsCjUWlVU7oX6WVNiq9tW8oaq"},
     },{
+      plugin: require('/Users/tylerhenry/Desktop/discover-comedy/gatsby/node_modules/gatsby-plugin-google-analytics/gatsby-ssr'),
+      options: {"plugins":[],"trackingId":"UA-142485528-9"},
+    },{
+      plugin: require('/Users/tylerhenry/Desktop/discover-comedy/gatsby/node_modules/gatsby-plugin-hotjar/gatsby-ssr'),
+      options: {"plugins":[],"includeInDevelopment":true,"id":2159087,"sv":6},
+    },{
       plugin: require('/Users/tylerhenry/Desktop/discover-comedy/gatsby/gatsby-ssr'),
       options: {"plugins":[]},
     }]
